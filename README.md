@@ -1,3 +1,7 @@
+<a href="#">
+  <img align="right" src="https://metrics.lecoq.io/NWYLZW?template=terminal" />
+</a>
+
 ### Hi there 👋
 
 <!--
