@@ -1,3 +1,9 @@
+<a href="https://github.com/NWYLZW">
+  <p align="center">
+    <img src="https://github-profile-trophy.vercel.app/?username=NWYLZW&column=7&theme=onedark"/>
+  </p>
+</a>
+
 <a href="#">
   <img align="right" src="https://metrics.lecoq.io/NWYLZW?template=terminal" />
 </a>
