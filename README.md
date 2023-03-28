@@ -7,7 +7,6 @@
 # 👋 YiJie
 <img align="right" src="https://metrics.lecoq.io/NWYLZW?template=terminal" />
 <img width="340px" src="https://github-readme-stats.vercel.app/api?username=NWYLZW&theme=vue-dark&count_private=true&show_icons=true" />
-<img width="340px" src="https://github-readme-stats.vercel.app/api/top-langs/?username=NWYLZW&theme=vue-dark&layout=compact" />
 
 ## ℹ️ 关于我
 
