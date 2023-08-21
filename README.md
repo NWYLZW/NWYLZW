@@ -25,6 +25,7 @@
 
 * [ZodUI](https://github.com/zodui/zodui)
 * [Linearite](https://github.com/linearite/linearite)
+* [<img src="https://github.com/Power-Playground/app/blob/main/resources/PP_JB.svg" alt="Playground Icon" width="36px"/> Power Playground](https://github.com/Power-Playground/app)
 
 ## ✍️
 
