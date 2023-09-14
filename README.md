@@ -10,9 +10,9 @@
 
 ## ℹ️ About Me
 
-我是一介，我喜欢用 TypeScript，也喜欢写有趣的东西。
+你好，我是一介（YiJie/iˈdʒe/），我喜欢用 TypeScript，也喜欢写有趣的东西。
 
-## 📖 Always Learning
+## 📖 Skill
 
 <code><img src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white"/></code>
 <code><img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB"/></code>
