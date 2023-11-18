@@ -21,9 +21,10 @@
 
 ## 🏗️
 
+* [<img src="https://github.com/Power-Playground/app/blob/main/resources/PP_JB.svg" alt="Playground Icon" width="36px"/> Power Playground](https://github.com/Power-Playground/app)
+* [<img src="https://camo.githubusercontent.com/4270026a0971edc23d2a4d0257c92fdcb8360bc27fc9d5dc29d6948311ca9582/68747470733a2f2f7464657369676e2e6774696d672e636f6d2f736974652f5444657369676e2e706e67" alt="TDesign React Icon" height="36px"> TDesign React](https://github.com/Tencent/tdesign-react)
 * [ZodUI](https://github.com/zodui/zodui)
 * [Linearite](https://github.com/linearite/linearite)
-* [<img src="https://github.com/Power-Playground/app/blob/main/resources/PP_JB.svg" alt="Playground Icon" width="36px"/> Power Playground](https://github.com/Power-Playground/app)
 
 ## ✍️
 
