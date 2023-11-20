@@ -10,7 +10,7 @@
 
 ## ℹ️ About Me
 
-你好，我是一介（YiJie/iˈdʒe/），我喜欢用 TypeScript，也喜欢写有趣的东西。
+Hi，我是一介（YiJie/iˈdʒe/），喜欢挑战 TypeScript，也喜欢写有趣的应用。
 
 ## 📖 Skill
 
