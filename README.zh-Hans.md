@@ -25,6 +25,27 @@
 
 核心目标很直接：一次配置，全部工作。One Works 会标准化工具的安装、启动、连接、配置和扩展方式，让同一个项目可以在本地桌面、浏览器界面、编辑器集成和命令行自动化之间切换，而不用重复搭建每一套环境。
 
+## 赞助者
+
+<!-- sponsors:start -->
+<p align="center">
+  <a href="https://github.com/sponsors/NWYLZW"><strong>在 GitHub Sponsors 支持 One Works / 一介</strong></a>
+</p>
+
+### 当前赞助者
+
+<p align="center"><sub>暂无公开的当前赞助者。</sub></p>
+
+### 历史赞助者
+
+<p align="center">
+  <a href="https://github.com/Garfield550" title="Garfield Lee (@Garfield550)"><img src="https://avatars.githubusercontent.com/u/3471836?s=96&amp;u=a4ec83c9ac88ef24228e968dd9a2225fa2fe4d59&amp;v=4" width="56" height="56" alt="@Garfield550"></a>
+  <a href="https://github.com/nonzzz" title="kanno (@nonzzz)"><img src="https://avatars.githubusercontent.com/u/52351095?s=96&amp;u=d48fceb740a9504ff522ebacac5e49bd3c763a65&amp;v=4" width="56" height="56" alt="@nonzzz"></a>
+</p>
+
+<p align="center"><sub>由 GitHub Actions 每天自动更新。</sub></p>
+<!-- sponsors:end -->
+
 ## 从这里开始
 
 ```bash

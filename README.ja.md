@@ -25,6 +25,27 @@
 
 目標はシンプルです。一度設定すれば、どこでも同じワークフローを使えること。One Works は、ツールのインストール、起動、接続、設定、拡張の方法を標準化し、同じプロジェクトをローカルデスクトップ、ブラウザー UI、エディター統合、コマンドライン自動化の間で自然に行き来できるようにします。
 
+## スポンサー
+
+<!-- sponsors:start -->
+<p align="center">
+  <a href="https://github.com/sponsors/NWYLZW"><strong>GitHub Sponsors で One Works / YiJie を支援する</strong></a>
+</p>
+
+### 現在のスポンサー
+
+<p align="center"><sub>公開されている現在のスポンサーはまだありません。</sub></p>
+
+### 過去のスポンサー
+
+<p align="center">
+  <a href="https://github.com/Garfield550" title="Garfield Lee (@Garfield550)"><img src="https://avatars.githubusercontent.com/u/3471836?s=96&amp;u=a4ec83c9ac88ef24228e968dd9a2225fa2fe4d59&amp;v=4" width="56" height="56" alt="@Garfield550"></a>
+  <a href="https://github.com/nonzzz" title="kanno (@nonzzz)"><img src="https://avatars.githubusercontent.com/u/52351095?s=96&amp;u=d48fceb740a9504ff522ebacac5e49bd3c763a65&amp;v=4" width="56" height="56" alt="@nonzzz"></a>
+</p>
+
+<p align="center"><sub>GitHub Actions により毎日自動更新されます。</sub></p>
+<!-- sponsors:end -->
+
 ## はじめる
 
 ```bash

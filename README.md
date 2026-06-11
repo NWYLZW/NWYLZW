@@ -25,6 +25,27 @@ I am currently building [One Works](https://github.com/oneworks-ai/app): an open
 
 The goal is simple: configure your AI tools once, then use the same workflow everywhere. One Works standardizes how tools are installed, launched, connected, configured, and extended, so a project can move between local desktop work, browser UI, editor integration, and command-line automation without rebuilding the same setup each time.
 
+## Sponsors
+
+<!-- sponsors:start -->
+<p align="center">
+  <a href="https://github.com/sponsors/NWYLZW"><strong>Sponsor One Works / YiJie on GitHub</strong></a>
+</p>
+
+### Current sponsors
+
+<p align="center"><sub>No public current sponsors yet.</sub></p>
+
+### Past sponsors
+
+<p align="center">
+  <a href="https://github.com/Garfield550" title="Garfield Lee (@Garfield550)"><img src="https://avatars.githubusercontent.com/u/3471836?s=96&amp;u=a4ec83c9ac88ef24228e968dd9a2225fa2fe4d59&amp;v=4" width="56" height="56" alt="@Garfield550"></a>
+  <a href="https://github.com/nonzzz" title="kanno (@nonzzz)"><img src="https://avatars.githubusercontent.com/u/52351095?s=96&amp;u=d48fceb740a9504ff522ebacac5e49bd3c763a65&amp;v=4" width="56" height="56" alt="@nonzzz"></a>
+</p>
+
+<p align="center"><sub>Updated daily by GitHub Actions.</sub></p>
+<!-- sponsors:end -->
+
 ## Start Here
 
 ```bash
