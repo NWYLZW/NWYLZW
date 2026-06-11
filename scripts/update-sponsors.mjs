@@ -14,7 +14,7 @@ if (!token) {
   throw new Error("Missing SPONSORS_TOKEN, GITHUB_TOKEN, or GH_TOKEN.");
 }
 
-const query = `
+const maintainerSponsorsQuery = `
   query MaintainerSponsors($login: String!, $after: String, $activeOnly: Boolean!, $includePrivate: Boolean!) {
     user(login: $login) {
       sponsorshipsAsMaintainer(
@@ -49,16 +49,81 @@ const query = `
   }
 `;
 
+const sponsorTargetsQuery = `
+  query SponsorTargets($login: String!, $after: String, $activeOnly: Boolean!) {
+    user(login: $login) {
+      sponsorshipsAsSponsor(first: 100, after: $after, activeOnly: $activeOnly) {
+        pageInfo {
+          hasNextPage
+          endCursor
+        }
+        nodes {
+          sponsorable {
+            __typename
+            ... on User {
+              login
+              name
+              url
+              avatarUrl(size: 96)
+            }
+            ... on Organization {
+              login
+              name
+              url
+              avatarUrl(size: 96)
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+const sponsorTargetsWithPrivacyQuery = `
+  query SponsorTargetsWithPrivacy($login: String!, $after: String, $activeOnly: Boolean!) {
+    user(login: $login) {
+      sponsorshipsAsSponsor(first: 100, after: $after, activeOnly: $activeOnly) {
+        pageInfo {
+          hasNextPage
+          endCursor
+        }
+        nodes {
+          privacyLevel
+          sponsorable {
+            __typename
+            ... on User {
+              login
+              name
+              url
+              avatarUrl(size: 96)
+            }
+            ... on Organization {
+              login
+              name
+              url
+              avatarUrl(size: 96)
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
 const readmes = [
   {
     file: "README.md",
     labels: {
       section: "Sponsors",
-      current: "Current sponsors",
-      past: "Past sponsors",
+      receivedCurrent: "Sponsoring my work now",
+      receivedPast: "Sponsored my work before",
+      givingCurrent: "People I sponsor now",
+      givingPast: "People I sponsored before",
       cta: "Sponsor One Works / YiJie on GitHub",
-      emptyCurrent: "No public current sponsors yet.",
-      emptyPast: "No public past sponsors yet.",
+      emptyReceivedCurrent: "No public current sponsors yet.",
+      emptyReceivedPast: "No public past sponsors yet.",
+      emptyGivingCurrent: "No public current sponsorships yet.",
+      emptyGivingPast: "No public past sponsorships yet.",
       updated: "Updated daily by GitHub Actions.",
       insertBefore: "## Start Here",
     },
@@ -67,11 +132,15 @@ const readmes = [
     file: "README.zh-Hans.md",
     labels: {
       section: "赞助者",
-      current: "当前赞助者",
-      past: "历史赞助者",
+      receivedCurrent: "正在赞助我的人",
+      receivedPast: "曾经赞助我的人",
+      givingCurrent: "我正在赞助的人",
+      givingPast: "我曾经赞助过的人",
       cta: "在 GitHub Sponsors 支持 One Works / 一介",
-      emptyCurrent: "暂无公开的当前赞助者。",
-      emptyPast: "暂无公开的历史赞助者。",
+      emptyReceivedCurrent: "暂无公开的当前赞助者。",
+      emptyReceivedPast: "暂无公开的历史赞助者。",
+      emptyGivingCurrent: "暂无公开的当前赞助对象。",
+      emptyGivingPast: "暂无公开的历史赞助对象。",
       updated: "由 GitHub Actions 每天自动更新。",
       insertBefore: "## 从这里开始",
     },
@@ -80,23 +149,45 @@ const readmes = [
     file: "README.ja.md",
     labels: {
       section: "スポンサー",
-      current: "現在のスポンサー",
-      past: "過去のスポンサー",
+      receivedCurrent: "現在支援してくれているスポンサー",
+      receivedPast: "過去に支援してくれたスポンサー",
+      givingCurrent: "現在支援している人",
+      givingPast: "過去に支援した人",
       cta: "GitHub Sponsors で One Works / YiJie を支援する",
-      emptyCurrent: "公開されている現在のスポンサーはまだありません。",
-      emptyPast: "公開されている過去のスポンサーはまだありません。",
+      emptyReceivedCurrent: "公開されている現在のスポンサーはまだありません。",
+      emptyReceivedPast: "公開されている過去のスポンサーはまだありません。",
+      emptyGivingCurrent: "公開されている現在の支援先はまだありません。",
+      emptyGivingPast: "公開されている過去の支援先はまだありません。",
       updated: "GitHub Actions により毎日自動更新されます。",
       insertBefore: "## はじめる",
     },
   },
 ];
 
-const activeSponsors = await fetchSponsors(true);
-const allSponsors = await fetchSponsors(false);
-const currentSponsors = dedupeSponsors(activeSponsors);
-const currentLogins = new Set(currentSponsors.map((sponsor) => sponsor.login.toLowerCase()));
-const pastSponsors = dedupeSponsors(
-  allSponsors.filter((sponsor) => !currentLogins.has(sponsor.login.toLowerCase())),
+let canReadSponsorTargetPrivacy = true;
+
+const activeReceivedSponsors = await fetchReceivedSponsors(true);
+const allReceivedSponsors = await fetchReceivedSponsors(false);
+const currentReceivedSponsors = dedupeSponsors(activeReceivedSponsors);
+const currentReceivedLogins = new Set(
+  currentReceivedSponsors.map((sponsor) => sponsor.login.toLowerCase()),
+);
+const pastReceivedSponsors = dedupeSponsors(
+  allReceivedSponsors.filter(
+    (sponsor) => !currentReceivedLogins.has(sponsor.login.toLowerCase()),
+  ),
+);
+
+const activeSponsorTargets = await fetchSponsorTargets(true);
+const allSponsorTargets = await fetchSponsorTargets(false);
+const currentSponsorTargets = dedupeSponsors(activeSponsorTargets);
+const currentSponsorTargetLogins = new Set(
+  currentSponsorTargets.map((sponsor) => sponsor.login.toLowerCase()),
+);
+const pastSponsorTargets = dedupeSponsors(
+  allSponsorTargets.filter(
+    (sponsor) => !currentSponsorTargetLogins.has(sponsor.login.toLowerCase()),
+  ),
 );
 
 for (const readme of readmes) {
@@ -109,27 +200,85 @@ for (const readme of readmes) {
 }
 
 console.log(
-  `Updated sponsors for ${sponsorLogin}: ${currentSponsors.length} current, ${pastSponsors.length} past.`,
+  [
+    `Updated sponsors for ${sponsorLogin}:`,
+    `${currentReceivedSponsors.length} current supporters,`,
+    `${pastReceivedSponsors.length} past supporters,`,
+    `${currentSponsorTargets.length} current sponsorships,`,
+    `${pastSponsorTargets.length} past sponsorships.`,
+  ].join(" "),
 );
 
-async function fetchSponsors(activeOnly) {
+async function fetchReceivedSponsors(activeOnly) {
+  return fetchSponsorships({
+    activeOnly,
+    connectionField: "sponsorshipsAsMaintainer",
+    entityField: "sponsorEntity",
+    includePrivateArgument: includePrivate,
+    source: maintainerSponsorsQuery,
+  });
+}
+
+async function fetchSponsorTargets(activeOnly) {
+  if (canReadSponsorTargetPrivacy) {
+    try {
+      return await fetchSponsorships({
+        activeOnly,
+        connectionField: "sponsorshipsAsSponsor",
+        entityField: "sponsorable",
+        filterPrivateByPrivacyLevel: !includePrivate,
+        source: sponsorTargetsWithPrivacyQuery,
+      });
+    } catch (error) {
+      if (!isPrivacyScopeError(error)) {
+        throw error;
+      }
+
+      canReadSponsorTargetPrivacy = false;
+    }
+  }
+
+  return fetchSponsorships({
+    activeOnly,
+    connectionField: "sponsorshipsAsSponsor",
+    entityField: "sponsorable",
+    source: sponsorTargetsQuery,
+  });
+}
+
+async function fetchSponsorships({
+  activeOnly,
+  connectionField,
+  entityField,
+  filterPrivateByPrivacyLevel = false,
+  includePrivateArgument,
+  source,
+}) {
   const sponsors = [];
   let after = null;
 
   do {
-    const data = await graphql(query, {
+    const variables = {
       login: sponsorLogin,
       after,
       activeOnly,
-      includePrivate,
-    });
-    const connection = data.user?.sponsorshipsAsMaintainer;
+    };
+    if (includePrivateArgument !== undefined) {
+      variables.includePrivate = includePrivateArgument;
+    }
+
+    const data = await graphql(source, variables);
+    const connection = data.user?.[connectionField];
 
     if (!connection) {
       throw new Error(`GitHub user not found or sponsors unavailable: ${sponsorLogin}`);
     }
 
-    sponsors.push(...connection.nodes.map(normalizeSponsor).filter(Boolean));
+    sponsors.push(
+      ...connection.nodes
+        .map((node) => normalizeSponsor(node, entityField, filterPrivateByPrivacyLevel))
+        .filter(Boolean),
+    );
     after = connection.pageInfo.hasNextPage ? connection.pageInfo.endCursor : null;
   } while (after);
 
@@ -153,14 +302,20 @@ async function graphql(source, variables) {
     throw new Error(`GitHub GraphQL request failed: ${response.status} ${JSON.stringify(body)}`);
   }
   if (body.errors?.length) {
-    throw new Error(`GitHub GraphQL errors: ${JSON.stringify(body.errors)}`);
+    const error = new Error(`GitHub GraphQL errors: ${JSON.stringify(body.errors)}`);
+    error.graphqlErrors = body.errors;
+    throw error;
   }
 
   return body.data;
 }
 
-function normalizeSponsor(node) {
-  const entity = node.sponsorEntity;
+function normalizeSponsor(node, entityField, filterPrivateByPrivacyLevel) {
+  if (filterPrivateByPrivacyLevel && node.privacyLevel && node.privacyLevel !== "PUBLIC") {
+    return null;
+  }
+
+  const entity = node[entityField];
   if (!entity?.login || !entity?.url || !entity?.avatarUrl) {
     return null;
   }
@@ -220,13 +375,21 @@ function renderSponsorsBlock(labels) {
     )}</strong></a>`,
     "</p>",
     "",
-    `### ${labels.current}`,
+    `### ${labels.receivedCurrent}`,
     "",
-    renderSponsorGrid(currentSponsors, labels.emptyCurrent),
+    renderSponsorGrid(currentReceivedSponsors, labels.emptyReceivedCurrent),
     "",
-    `### ${labels.past}`,
+    `### ${labels.receivedPast}`,
     "",
-    renderSponsorGrid(pastSponsors, labels.emptyPast),
+    renderSponsorGrid(pastReceivedSponsors, labels.emptyReceivedPast),
+    "",
+    `### ${labels.givingCurrent}`,
+    "",
+    renderSponsorGrid(currentSponsorTargets, labels.emptyGivingCurrent),
+    "",
+    `### ${labels.givingPast}`,
+    "",
+    renderSponsorGrid(pastSponsorTargets, labels.emptyGivingPast),
     "",
     `<p align="center"><sub>${escapeHtml(labels.updated)}</sub></p>`,
     "<!-- sponsors:end -->",
@@ -261,4 +424,12 @@ function escapeHtml(value) {
 
 function escapeAttribute(value) {
   return escapeHtml(value).replaceAll('"', "&quot;");
+}
+
+function isPrivacyScopeError(error) {
+  return error.graphqlErrors?.some(
+    (graphqlError) =>
+      graphqlError.type === "INSUFFICIENT_SCOPES" &&
+      String(graphqlError.message).includes("privacyLevel"),
+  );
 }
