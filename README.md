@@ -1,33 +1,47 @@
-<a href="https://github.com/NWYLZW">
-  <p align="center">
-    <img src="https://github-profile-trophy.vercel.app/?username=NWYLZW&column=7&theme=onedark"/>
-  </p>
-</a>
+<p align="center">
+  <a href="https://github.com/oneworks-ai/app">
+    <img alt="One Works icon" src="https://raw.githubusercontent.com/oneworks-ai/app/main/apps/desktop/build/icons/metal/transparent/light.png" width="180">
+  </a>
+</p>
 
-# 👋 YiJie
-<img align="right" src="https://metrics.lecoq.io/NWYLZW?template=terminal" />
-<img width="340px" src="https://github-readme-stats.vercel.app/api?username=NWYLZW&theme=vue-dark&count_private=true&show_icons=true" />
+<p align="center">
+  <a href="https://github.com/oneworks-ai/app"><img alt="One Works" src="https://img.shields.io/badge/One%20Works-open%20source-111827?style=flat-square"></a>
+  <a href="https://www.npmjs.com/package/oneworks"><img alt="npm" src="https://img.shields.io/npm/v/oneworks?label=npm&style=flat-square"></a>
+  <a href="https://github.com/oneworks-ai/app/releases"><img alt="Release" src="https://img.shields.io/github/v/release/oneworks-ai/app?include_prereleases&label=release&style=flat-square"></a>
+  <a href="https://oneworks-ai.github.io/docs/"><img alt="Docs" src="https://img.shields.io/badge/docs-online-2563eb?style=flat-square"></a>
+</p>
 
-## ℹ️ About Me
+<p align="center">
+  English | <a href="./README.zh-Hans.md">简体中文</a> | <a href="./README.ja.md">日本語</a>
+</p>
 
-Hi，我是一介（YiJie/iˈdʒe/）。
+<h1 align="center">YiJie</h1>
 
-开源爱好者 · TypeScirpt 体操好手 · 类型系统的忠实信徒 · Monorepo 的资深研究者 · 前端工具链的实践者。
+<p align="center"><strong>Building One Works, an open-source workspace for AI work.</strong></p>
 
-## 📖 Skill
+## Current Focus
 
-<code><img src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white"/></code>
-<code><img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB"/></code>
-<code><img src="https://img.shields.io/badge/vue-%2335495e.svg?style=for-the-badge&logo=vuedotjs&logoColor=%234FC08D"/></code>
-<code><img src="https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white"/></code>
+I am currently building [One Works](https://github.com/oneworks-ai/app): an open-source AI workspace for coordinating coding agents, plugins, adapters, runtime data, and configuration across desktop, web, VS Code, and CLI.
 
-## 🏗️
+The goal is simple: configure your AI tools once, then use the same workflow everywhere. One Works standardizes how tools are installed, launched, connected, configured, and extended, so a project can move between local desktop work, browser UI, editor integration, and command-line automation without rebuilding the same setup each time.
 
-* [<img src="https://github.com/Power-Playground/app/blob/main/resources/PP_JB.svg" alt="Playground Icon" width="36px"/> Power Playground](https://github.com/Power-Playground/app)
-* [<img src="https://tdesign.gtimg.com/site/TDesign.png" alt="TDesign React Icon" height="36px"> TDesign React](https://github.com/Tencent/tdesign-react)
-* [ZodUI](https://github.com/zodui/zodui)
-* [Linearite](https://github.com/linearite/linearite)
+## Start Here
 
-## ✍️
+```bash
+npx oneworks
+```
 
-我喜欢用 [WebStorm](https://www.jetbrains.com/webstorm/)，我的主题是 [Atom OneDark Theme](https://plugins.jetbrains.com/plugin/12178-atom-onedark-theme) ，我的字体是 [Hack Nerd Font Mono](https://www.programmingfonts.org/#hack) ，字体的[下载地址](https://www.nerdfonts.com/font-downloads#:~:text=%E2%80%A2%20Info%3A%20Dotted%20zero%2C%20short%20descenders%2C%20expands%20upon%20work%20done%20for%20Bitstream%20Vera%20%26%20DejaVu%2C%20legible%20at%20common%20sizes)。
+| Link | Description |
+| --- | --- |
+| [oneworks-ai/app](https://github.com/oneworks-ai/app) | Main monorepo for the CLI, desktop app, web client, VS Code extension, adapters, and shared packages |
+| [Docs](https://oneworks-ai.github.io/docs/) | Usage guides and integration documentation |
+| [Releases](https://github.com/oneworks-ai/app/releases) | Desktop artifacts and package release tags |
+| [npm: oneworks](https://www.npmjs.com/package/oneworks) | Bootstrap package for `npx oneworks` |
+
+## What I Care About
+
+- Extensible plugin architecture for AI coding workflows
+- Standardized configuration across many tools and entry points
+- Local-first desktop and web experiences
+- TypeScript, runtime protocols, adapters, and developer tooling
+- Open-source systems that are practical enough to use every day
